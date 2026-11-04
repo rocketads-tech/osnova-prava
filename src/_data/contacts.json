@@ -1,7 +1,8 @@
 {
+  "legalName": "ООО «Основа права»",
   "phone": "8-800-555-55-55",
   "email": "info@osnova-prava.com",
-  "address": "г. Казань, ул. Примерная, д. 1, офис 100",
+  "address": "г. Бердянск, ул. Свободы, 50",
   "workHours": {
     "days": {
       "monday": "9:00 — 17:00",
