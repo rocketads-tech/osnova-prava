@@ -2,8 +2,8 @@
 declare(strict_types=1);
 
 // === НАСТРОЙКИ: поменяйте адрес получателя заявок ===
-const MAIL_TO = 'info@osnova-prava.com';
-const MAIL_FROM = 'noreply@osnova-prava.com';
+const MAIL_TO = 'million101@ya.ru';
+const MAIL_FROM = 'info@osnova-prava.com';
 const SITE_NAME = 'osnova-prava.com';
 
 header('Content-Type: application/json; charset=utf-8');
