@@ -45,7 +45,7 @@ jobs:
           username: ${{ secrets.SSH_USERNAME }}
           password: ${{ secrets.SSH_PASSWORD }}
           source: "_site/*"
-          target: /var/www/u3692933/www/osnova-prava.com
+          target: /var/www/u3692933/data/www/osnova-prava.com
           strip_components: 1
           overwrite: true
 
@@ -55,4 +55,4 @@ jobs:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USERNAME }}
           password: ${{ secrets.SSH_PASSWORD }}
-          script: ls -la /var/www/u3692933/www/osnova-prava.com | head -20
+          script: ls -la /var/www/u3692933/data/www/osnova-prava.com | head -20
