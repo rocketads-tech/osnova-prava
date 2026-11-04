@@ -3,6 +3,11 @@
   "phone": "8-800-555-55-55",
   "email": "info@osnova-prava.com",
   "address": "г. Бердянск, ул. Свободы, 50",
+  "addressParts": {
+    "country": "RU",
+    "locality": "Бердянск",
+    "street": "ул. Свободы, 50"
+  },
   "workHours": {
     "days": {
       "monday": "9:00 — 17:00",
