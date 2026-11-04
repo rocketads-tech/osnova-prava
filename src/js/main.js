@@ -284,7 +284,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const updateActiveLink = () => {
       const spyLine = window.scrollY + window.innerHeight * 0.35;
-      let currentId = spySections[0].id;
+      let currentId = spySections.length ? spySections[0].id : null;
 
       spySections.forEach((section) => {
         if (spyLine >= section.offsetTop) {
@@ -293,7 +293,7 @@ document.addEventListener("DOMContentLoaded", () => {
       });
 
       navLinks.forEach((link) => {
-        link.classList.toggle("active", link.getAttribute("href") === "#" + currentId);
+        link.classList.toggle("active", link.getAttribute("href").split("#")[1] === currentId);
       });
     };
 

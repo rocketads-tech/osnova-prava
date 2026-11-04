@@ -1,0 +1,46 @@
+.privacy {
+  max-width: 52rem;
+  margin: 0 auto;
+  padding: var(--spacing-lg) 0 var(--spacing-2xl);
+}
+
+.privacy h1 {
+  font-family: var(--font-heading);
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-regular);
+  color: var(--color-heading);
+  margin: 0 0 var(--spacing-md);
+}
+
+.privacy h2 {
+  font-family: var(--font-heading);
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-medium);
+  color: var(--color-heading);
+  margin: var(--spacing-md) 0 var(--spacing-xs);
+}
+
+.privacy p,
+.privacy li {
+  color: var(--color-text);
+  line-height: var(--line-height-loose);
+  margin: 0 0 var(--spacing-xs);
+}
+
+.privacy ul {
+  margin: 0 0 var(--spacing-sm);
+  padding-left: 1.25rem;
+}
+
+.privacy a {
+  color: var(--color-gold);
+}
+
+.privacy a:hover {
+  color: var(--color-gold-dark);
+}
+
+.privacy-meta {
+  margin-top: var(--spacing-md);
+  font-size: var(--font-size-sm);
+}
