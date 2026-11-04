@@ -61,6 +61,17 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (modalForm && submitBtn) {
       const defaultLabel = submitBtn.textContent;
+      const consentCheckbox = modalForm.querySelector('input[name="consent"]');
+
+      const syncSubmitState = () => {
+        if (consentCheckbox) {
+          submitBtn.disabled = !consentCheckbox.checked;
+        }
+      };
+
+      if (consentCheckbox) {
+        consentCheckbox.addEventListener("change", syncSubmitState);
+      }
 
       modalForm.addEventListener("submit", (event) => {
         event.preventDefault();
@@ -83,7 +94,7 @@ document.addEventListener("DOMContentLoaded", () => {
             setStatus("Ошибка соединения. Позвоните нам: 8-800-555-55-55", "error");
           })
           .finally(() => {
-            submitBtn.disabled = false;
+            syncSubmitState();
             submitBtn.textContent = defaultLabel;
           });
       });

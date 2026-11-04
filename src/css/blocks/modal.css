@@ -132,6 +132,11 @@
   width: 100%;
 }
 
+.modal-submit:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
 .modal-hp {
   position: absolute;
   width: 1px;
