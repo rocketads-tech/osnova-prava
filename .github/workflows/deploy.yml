@@ -24,6 +24,19 @@ jobs:
       - name: Build site
         run: npm run build
 
+      - name: Inspect hosting paths
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USERNAME }}
+          password: ${{ secrets.SSH_PASSWORD }}
+          script: |
+            echo "HOME=$HOME"
+            pwd
+            whoami
+            ls -la /var/www/u3692933 2>/dev/null | head -30
+            find /var/www/u3692933 -maxdepth 3 -type d -name "osnova-prava.com" 2>/dev/null
+
       - name: Upload site to hosting
         uses: appleboy/scp-action@v0.1.7
         with:
@@ -31,9 +44,8 @@ jobs:
           username: ${{ secrets.SSH_USERNAME }}
           password: ${{ secrets.SSH_PASSWORD }}
           source: "_site/*"
-          target: ${{ secrets.DEPLOY_PATH }}
+          target: /var/www/u3692933/www/osnova-prava.com
           strip_components: 1
-          rm: true
           overwrite: true
 
       - name: Verify deployment
@@ -42,4 +54,4 @@ jobs:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USERNAME }}
           password: ${{ secrets.SSH_PASSWORD }}
-          script: ls -la ${{ secrets.DEPLOY_PATH }} | head -20
+          script: ls -la /var/www/u3692933/www/osnova-prava.com | head -20
