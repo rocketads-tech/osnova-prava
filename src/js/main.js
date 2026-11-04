@@ -10,6 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const modalTitle = callbackModal.querySelector("[data-modal-title]");
     const modalSubtitle = callbackModal.querySelector("[data-modal-subtitle]");
     const modalForm = callbackModal.querySelector(".modal-form");
+    const modalContent = callbackModal.querySelector(".modal-content");
     const formTypeInput = callbackModal.querySelector("[data-form-type-input]");
     const modalStatus = callbackModal.querySelector("[data-modal-status]");
     const submitBtn = modalForm ? modalForm.querySelector(".modal-submit") : null;
@@ -37,6 +38,9 @@ document.addEventListener("DOMContentLoaded", () => {
           formTypeInput.value = type;
         }
         resetStatus();
+        if (modalContent) {
+          modalContent.classList.remove("modal-content--success");
+        }
         modalTitle.textContent = btn.dataset.modalTitle || callbackModal.dataset.modalTitle;
         modalSubtitle.textContent = btn.dataset.modalSubtitle || callbackModal.dataset.modalSubtitle;
         callbackModal.classList.add("modal--open");
@@ -60,8 +64,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
       modalForm.addEventListener("submit", (event) => {
         event.preventDefault();
-
-        let sent = false;
         submitBtn.disabled = true;
         submitBtn.textContent = "Отправляем...";
 
@@ -69,15 +71,10 @@ document.addEventListener("DOMContentLoaded", () => {
           .then((response) => response.json())
           .then((data) => {
             if (data.ok) {
-              sent = true;
-              setStatus("Заявка отправлена! Мы свяжемся с вами в ближайшее время.", "success");
               modalForm.reset();
-              setTimeout(() => {
-                callbackModal.classList.remove("modal--open");
-                submitBtn.disabled = false;
-                submitBtn.textContent = defaultLabel;
-                resetStatus();
-              }, 3000);
+              if (modalContent) {
+                modalContent.classList.add("modal-content--success");
+              }
             } else {
               setStatus(data.error || "Не удалось отправить заявку. Позвоните нам: 8-800-555-55-55", "error");
             }
@@ -86,10 +83,8 @@ document.addEventListener("DOMContentLoaded", () => {
             setStatus("Ошибка соединения. Позвоните нам: 8-800-555-55-55", "error");
           })
           .finally(() => {
-            if (!sent) {
-              submitBtn.disabled = false;
-              submitBtn.textContent = defaultLabel;
-            }
+            submitBtn.disabled = false;
+            submitBtn.textContent = defaultLabel;
           });
       });
     }

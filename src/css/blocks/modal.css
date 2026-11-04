@@ -157,6 +157,61 @@
   color: var(--color-primary);
 }
 
+/* === Экран благодарности === */
+.modal-success {
+  display: none;
+  text-align: center;
+  padding: var(--spacing-md) 0 var(--spacing-sm);
+}
+
+.modal-content--success .modal-title,
+.modal-content--success .modal-subtitle,
+.modal-content--success .modal-form {
+  display: none;
+}
+
+.modal-content--success .modal-success {
+  display: block;
+  animation: modal-success-in 0.4s ease;
+}
+
+.modal-success-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 4rem;
+  height: 4rem;
+  margin: 0 auto var(--spacing-md);
+  border: 2px solid var(--color-gold);
+  border-radius: 50%;
+  font-size: 2.25rem;
+  line-height: 1;
+  color: var(--color-gold);
+}
+
+.modal-success-title {
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-medium);
+  margin-bottom: var(--spacing-sm);
+}
+
+.modal-success-text {
+  font-size: var(--font-size-base);
+  color: var(--color-text);
+  line-height: var(--line-height-normal);
+}
+
+@keyframes modal-success-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
 /* Переключение полей по типу формы */
 .modal[data-form-type="callback"] .modal-only-consultation {
   display: none;
