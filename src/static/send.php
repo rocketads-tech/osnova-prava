@@ -45,7 +45,7 @@ if (empty($_POST['consent'])) {
 }
 
 $topic = $formType === 'callback' ? 'Заказ обратного звонка' : 'Заявка на консультацию';
-$subject = mb_encode_mimeheader('[' . SITE_NAME . '] ' . $topic);
+$subject = mb_encode_mimeheader('Заявка с сайта ' . SITE_NAME);
 
 $lines = [
     'Тип заявки: ' . $topic,
