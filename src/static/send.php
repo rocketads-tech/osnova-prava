@@ -2,7 +2,7 @@
 declare(strict_types=1);
 
 // === НАСТРОЙКИ: поменяйте адрес получателя заявок ===
-const MAIL_TO = 'info@bulat-law.ru';
+const MAIL_TO = 'million101@ya.ru';
 const MAIL_FROM = 'noreply@osnova-prava.com';
 const SITE_NAME = 'osnova-prava.com';
 
