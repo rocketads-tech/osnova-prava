@@ -9,10 +9,34 @@ document.addEventListener("DOMContentLoaded", () => {
   if (callbackModal) {
     const modalTitle = callbackModal.querySelector("[data-modal-title]");
     const modalSubtitle = callbackModal.querySelector("[data-modal-subtitle]");
+    const modalForm = callbackModal.querySelector(".modal-form");
+    const formTypeInput = callbackModal.querySelector("[data-form-type-input]");
+    const modalStatus = callbackModal.querySelector("[data-modal-status]");
+    const submitBtn = modalForm ? modalForm.querySelector(".modal-submit") : null;
+
+    const resetStatus = () => {
+      if (!modalStatus) return;
+      modalStatus.hidden = true;
+      modalStatus.textContent = "";
+      modalStatus.classList.remove("modal-status--success", "modal-status--error");
+    };
+
+    const setStatus = (text, type) => {
+      if (!modalStatus) return;
+      modalStatus.hidden = false;
+      modalStatus.textContent = text;
+      modalStatus.classList.remove("modal-status--success", "modal-status--error");
+      modalStatus.classList.add(type === "success" ? "modal-status--success" : "modal-status--error");
+    };
 
     openModalBtns.forEach((btn) => {
       btn.addEventListener("click", () => {
-        callbackModal.dataset.formType = btn.dataset.formType || "consultation";
+        const type = btn.dataset.formType || "consultation";
+        callbackModal.dataset.formType = type;
+        if (formTypeInput) {
+          formTypeInput.value = type;
+        }
+        resetStatus();
         modalTitle.textContent = btn.dataset.modalTitle || callbackModal.dataset.modalTitle;
         modalSubtitle.textContent = btn.dataset.modalSubtitle || callbackModal.dataset.modalSubtitle;
         callbackModal.classList.add("modal--open");
@@ -30,6 +54,45 @@ document.addEventListener("DOMContentLoaded", () => {
         callbackModal.classList.remove("modal--open");
       }
     });
+
+    if (modalForm && submitBtn) {
+      const defaultLabel = submitBtn.textContent;
+
+      modalForm.addEventListener("submit", (event) => {
+        event.preventDefault();
+
+        let sent = false;
+        submitBtn.disabled = true;
+        submitBtn.textContent = "Отправляем...";
+
+        fetch(modalForm.action, { method: "POST", body: new FormData(modalForm) })
+          .then((response) => response.json())
+          .then((data) => {
+            if (data.ok) {
+              sent = true;
+              setStatus("Заявка отправлена! Мы свяжемся с вами в ближайшее время.", "success");
+              modalForm.reset();
+              setTimeout(() => {
+                callbackModal.classList.remove("modal--open");
+                submitBtn.disabled = false;
+                submitBtn.textContent = defaultLabel;
+                resetStatus();
+              }, 3000);
+            } else {
+              setStatus(data.error || "Не удалось отправить заявку. Позвоните нам: 8-800-555-55-55", "error");
+            }
+          })
+          .catch(() => {
+            setStatus("Ошибка соединения. Позвоните нам: 8-800-555-55-55", "error");
+          })
+          .finally(() => {
+            if (!sent) {
+              submitBtn.disabled = false;
+              submitBtn.textContent = defaultLabel;
+            }
+          });
+      });
+    }
   }
 
   // ==========================================

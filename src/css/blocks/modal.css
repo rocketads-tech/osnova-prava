@@ -132,6 +132,31 @@
   width: 100%;
 }
 
+.modal-hp {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.modal-status {
+  margin: 0;
+  font-size: var(--font-size-sm);
+  line-height: var(--line-height-normal);
+  text-align: center;
+}
+
+.modal-status--success {
+  color: #2e7d32;
+}
+
+.modal-status--error {
+  color: var(--color-primary);
+}
+
 /* Переключение полей по типу формы */
 .modal[data-form-type="callback"] .modal-only-consultation {
   display: none;
