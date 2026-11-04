@@ -1,7 +1,7 @@
 .privacy {
   max-width: 52rem;
   margin: 0 auto;
-  padding: var(--spacing-lg) 0 var(--spacing-2xl);
+  padding: 10rem 0 var(--spacing-2xl);
 }
 
 .privacy h1 {
@@ -43,4 +43,10 @@
 .privacy-meta {
   margin-top: var(--spacing-md);
   font-size: var(--font-size-sm);
+}
+
+@media (max-width: 768px) {
+  .privacy {
+    padding-top: 6rem;
+  }
 }
