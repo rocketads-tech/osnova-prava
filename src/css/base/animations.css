@@ -1,0 +1,58 @@
+[data-aos] {
+  opacity: 0;
+  transition-property: opacity, transform;
+  transition-duration: 0.8s;
+  transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  will-change: opacity, transform;
+}
+
+[data-aos="fade-up"] {
+  transform: translateY(48px);
+}
+
+[data-aos="fade-down"] {
+  transform: translateY(-48px);
+}
+
+[data-aos="fade-left"] {
+  transform: translateX(48px);
+}
+
+[data-aos="fade-right"] {
+  transform: translateX(-48px);
+}
+
+[data-aos="zoom-in"] {
+  transform: scale(0.88);
+}
+
+[data-aos].aos-animate {
+  opacity: 1;
+  transform: none;
+}
+
+[data-aos].aos-done {
+  transition: all 0.3s ease;
+  transition-delay: 0s;
+  will-change: auto;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-aos] {
+    opacity: 1;
+    transform: none;
+    transition: none;
+    will-change: auto;
+  }
+
+  .modal,
+  .modal-content,
+  .header,
+  .header-nav {
+    transition: none;
+  }
+
+  html {
+    scroll-behavior: auto;
+  }
+}

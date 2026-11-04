@@ -1,0 +1,45 @@
+{
+  "title": "Отзывы и решения выигранных дел",
+  "label": "Отзывы",
+  "items": [
+    {
+      "name": "Мухлисова Альфия",
+      "visible": false,
+      "social": "ВКонтакте",
+      "photo": "/img/review-photo-1.jpg",
+      "text": "Здесь будет текст отзыва клиента. В макете использовался текст-рыба, поэтому мы заменим его на реальный отзыв после получения информации от заказчика.",
+      "documents": [
+        "/img/doc-1.jpg",
+        "/img/doc-2.jpg",
+        "/img/doc-3.jpg",
+        "/img/doc-4.jpg"
+      ]
+    },
+    {
+      "name": "Иванов Сергей",
+      "visible": false,
+      "social": "Telegram",
+      "photo": "/img/review-photo-1.jpg",
+      "text": "Второй отзыв клиента. Текст будет заменён на реальный после получения информации от заказчика.",
+      "documents": [
+        "/img/doc-1.jpg",
+        "/img/doc-2.jpg",
+        "/img/doc-3.jpg",
+        "/img/doc-4.jpg"
+      ]
+    },
+    {
+      "name": "Петрова Мария",
+      "visible": false,
+      "social": "WhatsApp",
+      "photo": "/img/review-photo-1.jpg",
+      "text": "Третий отзыв клиента. Текст будет заменён на реальный после получения информации от заказчика.",
+      "documents": [
+        "/img/doc-1.jpg",
+        "/img/doc-2.jpg",
+        "/img/doc-3.jpg",
+        "/img/doc-4.jpg"
+      ]
+    }
+  ]
+}

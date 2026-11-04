@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="450" viewBox="0 0 800 450">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#b99568"/>
+      <stop offset="1" stop-color="#A3885F"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="450" fill="url(#bg)"/>
+  <rect x="20" y="20" width="760" height="410" fill="none" stroke="#ffffff" stroke-opacity="0.5" stroke-width="2" stroke-dasharray="10 8" rx="15"/>
+  <polygon fill="#ffffff" fill-opacity="0.9" points="400,130 415.57,178.56 466.57,178.37 425.21,208.19 441.14,256.63 400,226.5 358.86,256.63 374.79,208.19 333.43,178.37 384.43,178.56"/>
+  <text x="400" y="340" text-anchor="middle" font-family="Georgia, serif" font-size="26" fill="#ffffff" fill-opacity="0.95">Фото появится позже</text>
+</svg>

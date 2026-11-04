@@ -1,0 +1,24 @@
+<section class="advantages section-gray" id="advantages">
+  <div class="container">
+    <div class="section-label" data-aos="fade-down">✦ {{ advantages.label }}</div>
+    <h2 class="section-title" data-aos="fade-up">{{ advantages.title }}</h2>
+    
+    <div class="advantages-grid">
+      {% for item in advantages.items %}
+      <div class="advantage-card" data-aos="fade-up" data-aos-delay="{{ loop.index0 * 100 }}">
+        <div class="advantage-icon-outer">
+          <div class="advantage-icon-inner">
+            <img src="{{ item.icon }}" alt="{{ item.title }}">
+          </div>
+        </div>
+        <h3 class="advantage-title">{{ item.title }}</h3>
+        <p class="advantage-text">{{ item.text }}</p>
+      </div>
+      {% endfor %}
+    </div>
+    
+    <div class="advantages-cta" data-aos="fade-up">
+      <button class="btn btn-primary open-modal" data-form-type="consultation" data-modal-title="Записаться на консультацию к юристу" data-modal-subtitle="Мы перезвоним и запишем Вас на удобное время">{{ advantages.cta }}</button>
+    </div>
+  </div>
+</section>

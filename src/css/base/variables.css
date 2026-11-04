@@ -1,0 +1,69 @@
+:root {
+  /* === ЦВЕТА === */
+  --color-gold: #A3885F;
+  --color-gold-dark: #d1ad84;
+  
+  /* Кнопки */
+  --color-primary: #bb0000;
+  --color-primary-dark: #8e0000;
+  --color-primary-shadow: #350000;
+  
+  /* Тексты */
+  --color-heading: #2d2d2d;
+  --color-text: #474747;
+  
+  /* Фоны и рамки */
+  --color-bg: #ffffff;
+  --color-bg-light: #f8f8f8;
+  --color-border-dashed: var(--color-gold-dark);
+
+  /* === ШРИФТЫ === */
+  --font-heading: "Oranienbaum", serif;
+  --font-body: "Montserrat", sans-serif;
+  
+  /* === ВЕСА ШРИФТОВ === */
+  --font-regular: 400;
+  --font-medium: 500;
+  --font-semibold: 600;
+  --font-bold: 700;
+  
+  /* === РАЗМЕРЫ ШРИФТОВ (rem, масштабируются от html) === */
+  --font-size-xs: 0.75rem;    /* 12px */
+  --font-size-sm: 0.875rem;   /* 14px */
+  --font-size-base: 1rem;     /* 16px */
+  --font-size-md: 1.125rem;   /* 18px */
+  --font-size-lg: 1.25rem;    /* 20px */
+  --font-size-xl: 1.5rem;     /* 24px */
+  --font-size-2xl: 2rem;      /* 32px */
+  --font-size-3xl: 2.5rem;    /* 40px */
+  --font-size-4xl: 3rem;      /* 48px */
+  
+  /* === МЕЖСТРОЧНЫЕ ИНТЕРВАЛЫ === */
+  --line-height-tight: 1.15;
+  --line-height-normal: 1.5;
+  --line-height-loose: 1.6;
+  
+  /* === ОТСТУПЫ (rem, масштабируются) === */
+  --spacing-xs: 0.5rem;    /* 8px */
+  --spacing-sm: 1rem;      /* 16px */
+  --spacing-md: 1.5rem;    /* 24px */
+  --spacing-lg: 2.5rem;    /* 40px */
+  --spacing-xl: 3.75rem;   /* 60px */
+  --spacing-2xl: 5rem;     /* 80px */
+  
+  /* === СКРУГЛЕНИЯ (px, не масштабируются) === */
+  --radius-sm: 4px;
+  --radius-md: 10px;
+  --radius-lg: 15px;
+  --radius-xl: 24px;
+  
+  /* === РАЗМЕРЫ ИКОНОК (rem, масштабируются) === */
+  --icon-sm: 1.5rem;   /* 24px */
+  --icon-md: 2rem;     /* 32px */
+  --icon-lg: 2.5rem;   /* 40px */
+  --icon-xl: 3rem;     /* 48px */
+  --icon-2xl: 3.5rem; /* 56px */
+  --icon-3xl: 4rem; /* 64px */
+  --icon-4xl: 4.5rem; /* 72px */
+  --icon-5xl: 4.5rem; /* 80px */
+}

@@ -1,0 +1,28 @@
+{
+  "phone": "8-800-555-55-55",
+  "email": "info@bulat-law.ru",
+  "address": "г. Казань, ул. Примерная, д. 1, офис 100",
+  "workHours": {
+    "days": {
+      "monday": "9:00 — 17:00",
+      "tuesday": "9:00 — 17:00",
+      "wednesday": "9:00 — 17:00",
+      "thursday": "9:00 — 17:00",
+      "friday": "9:00 — 17:00",
+      "saturday": "Выходной",
+      "sunday": "Выходной"
+    },
+    "weekdays": "Пн-Пт: 9:00-17:00",
+    "weekend": "Сб, Вс: выходной"
+  },
+  "socials": {
+    "telegram": "@bulat_law",
+    "whatsapp": "+79651112233",
+    "vk": "https://vk.com/bulat_law",
+    "instagram": "@bulat_law"
+  },
+  "requisites": {
+    "inn": "1234567890",
+    "ogrn": "1234567890123"
+  }
+}

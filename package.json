@@ -1,0 +1,15 @@
+{
+  "name": "site",
+  "version": "1.0.0",
+  "description": "Лендинг юридического агентства",
+  "main": "index.js",
+  "scripts": {
+    "dev": "npx @11ty/eleventy --serve",
+    "build": "npx @11ty/eleventy"
+  },
+  "author": "RocketADS",
+  "license": "ISC",
+  "devDependencies": {
+    "@11ty/eleventy": "^3.1.7"
+  }
+}

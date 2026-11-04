@@ -1,0 +1,36 @@
+<section class="services section-gray" id="services">
+  <div class="container">
+    <div class="section-label" data-aos="fade-down">✦ {{ services.label }}</div>
+    <h2 class="section-title" data-aos="fade-up">{{ services.title }}</h2>
+    
+    <div class="services-grid">
+      {% for item in services.items %}
+      <div class="service-card" data-aos="fade-up" data-aos-delay="{{ loop.index0 * 100 }}">
+        <div class="service-card-outer">
+          <div class="service-card-inner">
+            
+            {% if item.image %}
+              <!-- Фото-хедер -->
+              <div class="service-card-image">
+                <img src="{{ item.image }}" alt="{{ item.title }}">
+              </div>
+            {% endif %}
+            
+            <!-- Контент карточки -->
+            <div class="service-card-content">
+              <h3 class="service-title">{{ item.title }}</h3>
+              <p class="service-subtitle">{{ item.subtitle }}</p>
+              <ul class="service-list">
+                {% for point in item.points %}
+                <li>{{ point }}</li>
+                {% endfor %}
+              </ul>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,108 @@
+.advantages {
+  padding: var(--spacing-2xl) 0;
+}
+
+.advantages-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--spacing-xl);
+  max-width: 75rem;
+  margin: 0 auto var(--spacing-xl);
+}
+
+.advantage-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+/* Внешняя обёртка иконки — белый фон + отступ */
+.advantage-icon-outer {
+  background: var(--color-bg);
+  border-radius: var(--radius-md);
+  padding: 0.3125rem 0.25rem; /* 5px 4px — отступ между краем и рамкой */
+  margin-bottom: var(--spacing-md);
+}
+
+/* Внутренняя обёртка — рамка outset */
+.advantage-icon-inner {
+  border: 1px outset var(--color-border-dashed);
+  border-radius: var(--radius-md);
+  width: 3.5rem; /* 56px */
+  height: 3.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.advantage-icon-inner img {
+  width: 2rem;
+  height: 2rem;
+  object-fit: contain;
+}
+
+.advantage-title {
+  font-family: var(--font-heading);
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-medium);
+  color: var(--color-heading);
+  margin-bottom: var(--spacing-sm);
+  line-height: var(--line-height-tight);
+}
+
+.advantage-text {
+  font-size: var(--font-size-sm);
+  color: var(--color-text);
+  line-height: var(--line-height-normal);
+  margin: 0;
+}
+
+.advantages-cta {
+  text-align: center;
+}
+
+.advantages-cta .btn {
+  padding: var(--spacing-sm) 2.5rem;
+}
+
+/* === АДАПТИВ === */
+
+@media (max-width: 1024px) {
+  .advantages-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-lg);
+  }
+}
+
+@media (max-width: 768px) {
+  .advantages {
+    padding: var(--spacing-xl) 0;
+  }
+  
+  .advantages-grid {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-lg);
+    max-width: 37.5rem;
+  }
+  
+  .advantage-card {
+    align-items: center;
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .advantage-icon-inner {
+    width: 3rem;
+    height: 3rem;
+  }
+  
+  .advantage-icon-inner img {
+    width: 1.75rem;
+    height: 1.75rem;
+  }
+  
+  .advantage-title {
+    font-size: var(--font-size-lg);
+  }
+}

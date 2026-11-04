@@ -1,0 +1,53 @@
+{% if reviewsVisible.hasVisible %}
+<section class="reviews section-gray" id="reviews">
+  <div class="container">
+    <div class="section-label" data-aos="fade-down">✦ {{ reviews.label }}</div>
+    <h2 class="section-title" data-aos="fade-up">{{ reviews.title }}</h2>
+    
+    <!-- Слайдер без стрелок внутри -->
+    <div class="swiper reviews-slider" data-aos="fade-up">
+      <div class="swiper-wrapper">
+        {% for review in reviewsVisible.items %}
+        <div class="swiper-slide review-slide">
+          <div class="review-photo-wrap">
+            <img src="{{ review.photo }}" alt="{{ review.name }}">
+            <div class="review-client-info">
+              <div class="review-name">{{ review.name }}</div>
+            </div>
+          </div>
+          
+          <div class="review-content">
+            <p class="review-text">{{ review.text }}</p>
+            
+            {% if review.documents and review.documents.length %}
+            <div class="review-documents">
+              <h4 class="documents-title">Решение:</h4>
+              <div class="documents-grid">
+                {% for doc in review.documents %}
+                <img src="{{ doc }}" alt="Документ" class="document-thumb">
+                {% endfor %}
+              </div>
+            </div>
+            {% endif %}
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+    
+    <!-- Стрелки навигации под слайдером -->
+    <div class="reviews-nav" data-aos="fade-up" data-aos-delay="200">
+      <button class="reviews-arrow reviews-prev" aria-label="Предыдущий отзыв">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M15 18l-6-6 6-6"/>
+        </svg>
+      </button>
+      <button class="reviews-arrow reviews-next" aria-label="Следующий отзыв">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M9 18l6-6-6-6"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+</section>
+{% endif %}

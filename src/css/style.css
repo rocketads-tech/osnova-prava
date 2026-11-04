@@ -1,0 +1,11 @@
+@import "base/variables.css";
+@import "base/reset.css";
+@import "blocks/header.css";
+@import "blocks/hero.css";
+@import "blocks/services.css";
+   @import "blocks/about.css";
+	 @import "blocks/advantages.css";
+	 @import "blocks/reviews.css";
+@import "blocks/footer.css";
+@import "blocks/modal.css";
+@import "base/animations.css";

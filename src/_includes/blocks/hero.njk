@@ -1,0 +1,31 @@
+<section class="hero" id="hero">
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-card-outer">
+        <div class="hero-card-inner">
+          <h1 class="hero-title" data-aos="fade-down">
+            <span class="hero-title-gold">Юридические услуги</span>
+            <span class="hero-title-dark">с гарантией результата</span>
+          </h1>
+          <ul class="hero-facts">
+            {% for fact in hero.facts %}
+            <li data-aos="fade-up" data-aos-delay="{{ 150 + loop.index0 * 150 }}">
+              <img src="{{ fact.icon }}" alt="" class="hero-fact-icon">
+              <span>{{ fact.text }}</span>
+            </li>
+            {% endfor %}
+          </ul>
+          <button class="btn btn-primary open-modal" data-form-type="consultation" data-modal-title="Бесплатная консультация юриста" data-modal-subtitle="Юрист проконсультирует вас в телефонном режиме" data-aos="fade-up" data-aos-delay="600">{{ hero.cta }}</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Фото юриста -->
+  <div class="hero-image" data-aos="fade-up" data-aos-delay="300">
+    <picture>
+      <source media="(max-width: 768px)" srcset="{{ hero.imageMobile }}">
+      <img src="{{ hero.image }}" alt="{{ hero.imageAlt }}">
+    </picture>
+  </div>
+</section>

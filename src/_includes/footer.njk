@@ -1,0 +1,98 @@
+<footer class="footer" id="contacts">
+  <div class="container">
+    <div class="footer-content" id="footer-offices">
+      <span class="footer-label" data-aos="fade-down">✦ Контакты</span>
+      <h3 class="footer-office-title" data-aos="fade-down" data-aos-delay="100">Офис в <span data-active-city>{{ officesView.active.cityIn }}</span></h3>
+      <div class="footer-cities" data-aos="fade-down" data-aos-delay="200">
+        {% for office in offices.items %}
+        <button class="footer-city{% if office.active %} hidden{% endif %}" data-city="{{ office.city }}" data-city-in="{{ office.cityIn }}" data-map-url="{{ office.mapUrl }}">{{ office.city }}</button>
+        {% endfor %}
+      </div>
+
+      <div class="footer-columns">
+        <div class="footer-col--info" data-aos="fade-right">
+          <div class="footer-info-inner">
+          {% for office in offices.items %}
+          {% set phone = office.phone or contacts.phone %}
+          {% set hours = office.hours or contacts.workHours.weekdays %}
+          {% set email = office.email or contacts.email %}
+          <div class="footer-office-info{% if office.active %} active{% endif %}" data-city="{{ office.city }}">
+            <div class="footer-info-item">
+              <span class="footer-info-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-4.9-7-11a7 7 0 0 1 14 0c0 6.1-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>
+              </span>
+              <div>
+                <p class="footer-info-title">г. {{ office.city }}</p>
+                <p class="footer-info-text">{{ office.address }}</p>
+              </div>
+            </div>
+
+            <div class="footer-info-item">
+              <span class="footer-info-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></svg>
+              </span>
+              <div>
+                <p class="footer-info-title">{{ hours }}</p>
+                <p class="footer-info-text">Режим работы</p>
+              </div>
+            </div>
+
+            <div class="footer-info-item">
+              <span class="footer-info-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h3.5l1.5 4.5L7.5 10a12.5 12.5 0 0 0 6.5 6.5l1.5-2.5L20 15.5V19a2 2 0 0 1-2.2 2A16.5 16.5 0 0 1 3 6.2 2 2 0 0 1 5 4z"/></svg>
+              </span>
+              <div>
+                <a href="tel:{{ phone }}" class="footer-info-title">{{ phone }}</a>
+                <p class="footer-info-text">Бесплатный звонок по России</p>
+              </div>
+            </div>
+
+            <div class="footer-info-item">
+              <span class="footer-info-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="5.5" width="17" height="13" rx="2"/><path d="m4.5 7.5 7.5 5.5 7.5-5.5"/></svg>
+              </span>
+              <div>
+                <a href="mailto:{{ email }}" class="footer-info-title">{{ email }}</a>
+                <p class="footer-info-text">Email</p>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+
+          <div class="footer-socials">
+            <a href="https://wa.me/{{ contacts.socials.whatsapp }}" class="social-link">
+              <img src="/img/icon-whatsapp.svg" alt="WhatsApp">
+              <span>WhatsApp</span>
+            </a>
+            <a href="https://t.me/{{ contacts.socials.telegram }}" class="social-link">
+              <img src="/img/icon-telegram.svg" alt="Telegram">
+              <span>Telegram</span>
+            </a>
+          </div>
+
+          <button class="btn btn-primary open-modal" data-form-type="callback" data-modal-title="Заказать обратный звонок" data-modal-subtitle="Юрист перезвонит в рабочее время, уточнит вопрос и предложит формат работы">Заказать звонок</button>
+          </div>
+        </div>
+
+        <div class="footer-map-outer" data-aos="fade-left" data-aos-delay="150">
+          <div class="footer-map-inner">
+            {% for office in offices.items %}
+            {% if office.active %}
+            <iframe id="footer-map" src="{{ office.mapUrl }}" allowfullscreen loading="lazy" title="Офис: {{ office.city }}, {{ office.address }}"></iframe>
+            {% endif %}
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Нижняя строка на всю ширину -->
+  <div class="footer-bottom">
+    <div class="container">
+      <p>Реквизиты: ИНН {{ contacts.requisites.inn }} | ОГРН {{ contacts.requisites.ogrn }}</p>
+      <p><a href="/privacy.html">Политика конфиденциальности</a></p>
+      <p>&copy; 2024 {{ site.name }}</p>
+    </div>
+  </div>
+</footer>

@@ -1,0 +1,33 @@
+<section class="about" id="about">
+  <div class="container">
+    <div class="section-label" data-aos="fade-down">✦ {{ about.label }}</div>
+    <h2 class="section-title" data-aos="fade-up">{{ about.title }}</h2>
+    
+    <div class="about-content">
+      <!-- Фото юриста -->
+      <div class="about-lawyer-photo" data-aos="fade-right">
+        <img src="{{ about.lawyer.photo }}" alt="{{ about.lawyer.name }}">
+        <div class="lawyer-name">{{ about.lawyer.name }}</div>
+      </div>
+      
+      <!-- Текст, регалии и кнопка -->
+      <div class="about-lawyer-info">
+        {% for paragraph in about.lawyer.description %}
+        <p data-aos="fade-up" data-aos-delay="{{ loop.index0 * 100 }}">{{ paragraph }}</p>
+        {% endfor %}
+        
+        <!-- Регалии перенесены сюда -->
+        <div class="about-achievements">
+          {% for achievement in about.achievements %}
+          <div class="achievement-item" data-aos="fade-up" data-aos-delay="{{ loop.index0 * 100 }}">
+            <div class="achievement-number">{{ achievement.number }}</div>
+            <div class="achievement-text">{{ achievement.text }}</div>
+          </div>
+          {% endfor %}
+        </div>
+        
+        <button class="btn btn-primary open-modal" data-form-type="consultation" data-modal-title="Задайте вопрос" data-modal-subtitle="Опишите ситуацию. Свяжемся с вами и, при необходимости, согласуем время консультации." data-aos="fade-up" data-aos-delay="500">{{ about.lawyer.cta }}</button>
+      </div>
+    </div>
+  </div>
+</section>
