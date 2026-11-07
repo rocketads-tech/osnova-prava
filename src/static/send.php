@@ -4,6 +4,7 @@ declare(strict_types=1);
 // === НАСТРОЙКИ: поменяйте адрес получателя заявок ===
 const MAIL_TO = 'million101@ya.ru';
 const MAIL_FROM = 'info@osnova-prava.com';
+const FROM_NAME = 'Сайт';
 const SITE_NAME = 'osnova-prava.com';
 
 header('Content-Type: application/json; charset=utf-8');
@@ -59,7 +60,7 @@ $lines[] = 'Дата: ' . date('d.m.Y H:i');
 $body = implode("\n", $lines);
 
 $headers = implode("\r\n", [
-    'From: ' . MAIL_FROM,
+    'From: ' . mb_encode_mimeheader(FROM_NAME) . ' <' . MAIL_FROM . '>',
     'Content-Type: text/plain; charset=UTF-8',
     'X-Mailer: PHP/' . PHP_VERSION,
 ]);
