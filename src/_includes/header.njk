@@ -7,14 +7,17 @@
       </div>
       <div class="header-contacts">
         <div class="socials">
-          <a href="https://wa.me/{{ contacts.socials.whatsapp }}" aria-label="WhatsApp">
+          <a href="{{ contacts.socials.max }}" target="_blank" rel="noopener" aria-label="Макс">
+            <img src="/img/icon-max.svg" alt="MAX">
+          </a>
+          <a href="https://wa.me/{{ contacts.socials.whatsapp }}" target="_blank" rel="noopener" aria-label="WhatsApp">
             <img src="/img/icon-whatsapp.svg" alt="WhatsApp">
           </a>
-          <a href="https://t.me/{{ contacts.socials.telegram }}" aria-label="Telegram">
+          <a href="https://t.me/{{ contacts.socials.telegram }}" target="_blank" rel="noopener" aria-label="Telegram">
             <img src="/img/icon-telegram.svg" alt="Telegram">
           </a>
         </div>
-        <a href="tel:{{ contacts.phone }}" class="phone">{{ contacts.phone }}</a>
+        <a href="tel:{{ contacts.phoneHref }}" class="phone">{{ contacts.phone }}</a>
         
         <!-- Кнопка бургера теперь внутри header-contacts -->
         <button class="burger" id="burger-btn" aria-label="Меню">

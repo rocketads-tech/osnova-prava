@@ -55,7 +55,7 @@
         "name": "{{ contacts.legalName }}",
         "legalName": "{{ contacts.legalName }}",
         "url": "{{ site.url }}/",
-        "telephone": "{{ contacts.phone | replace('8-', '+7') | replace('-', '') }}",
+        "telephone": "{{ contacts.phoneHref }}",
         "email": "{{ contacts.email }}",
         "image": "{{ site.url }}/img/hero.png",
         "logo": {
@@ -85,9 +85,9 @@
           {%- endfor %}
         ],
         "sameAs": [
-          "https://t.me/{{ contacts.socials.telegram | replace('@', '') }}",
-          "https://wa.me/{{ contacts.socials.whatsapp | replace('+', '') }}",
-          "{{ contacts.socials.vk }}"
+          "{{ contacts.socials.max }}",
+          "https://t.me/{{ contacts.socials.telegram }}",
+          "https://wa.me/{{ contacts.socials.whatsapp }}"
         ]
       }{% if home %},
       {

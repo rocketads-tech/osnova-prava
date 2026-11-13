@@ -87,11 +87,11 @@ document.addEventListener("DOMContentLoaded", () => {
                 modalContent.classList.add("modal-content--success");
               }
             } else {
-              setStatus(data.error || "Не удалось отправить заявку. Позвоните нам: 8-800-555-55-55", "error");
+              setStatus(data.error || "Не удалось отправить заявку. Позвоните нам: +7 (990) 009-36-90", "error");
             }
           })
           .catch(() => {
-            setStatus("Ошибка соединения. Позвоните нам: 8-800-555-55-55", "error");
+            setStatus("Ошибка соединения. Позвоните нам: +7 (990) 009-36-90", "error");
           })
           .finally(() => {
             syncSubmitState();

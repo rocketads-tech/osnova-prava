@@ -320,8 +320,8 @@ ogType: article
       <li>ИНН: {{ contacts.requisites.inn }}</li>
       <li>ОГРН: {{ contacts.requisites.ogrn }}</li>
       <li>Адрес: {{ contacts.address }}</li>
-      <li>Телефон: <a href="tel:{{ contacts.phone }}">{{ contacts.phone }}</a></li>
-      <li>Email: <a href="mailto:{{ contacts.email }}">{{ contacts.email }}</a></li>
+      <li>Телефон: <a href="tel:{{ contacts.phoneHref }}">{{ contacts.phone }}</a></li>
+      <li>Email: <a href="mailto:{{ contacts.email }}" target="_blank">{{ contacts.email }}</a></li>
       <li>Режим работы: {{ contacts.workHours.weekdays }}</li>
     </ul>
     <p>Обращения субъектов персональных данных, в том числе об уточнении, блокировании или уничтожении персональных данных, а также об отзыве согласия на их обработку, направляются по указанным контактам.</p>

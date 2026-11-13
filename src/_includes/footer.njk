@@ -13,7 +13,6 @@
         <div class="footer-col--info" data-aos="fade-right">
           <div class="footer-info-inner">
           {% for office in offices.items %}
-          {% set phone = office.phone or contacts.phone %}
           {% set hours = office.hours or contacts.workHours.weekdays %}
           {% set email = office.email or contacts.email %}
           <div class="footer-office-info{% if office.active %} active{% endif %}" data-city="{{ office.city }}">
@@ -42,17 +41,29 @@
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h3.5l1.5 4.5L7.5 10a12.5 12.5 0 0 0 6.5 6.5l1.5-2.5L20 15.5V19a2 2 0 0 1-2.2 2A16.5 16.5 0 0 1 3 6.2 2 2 0 0 1 5 4z"/></svg>
               </span>
               <div>
-                <a href="tel:{{ phone }}" class="footer-info-title">{{ phone }}</a>
-                <p class="footer-info-text">Бесплатный звонок по России</p>
+                <a href="tel:{{ contacts.phoneHref }}" class="footer-info-title">{{ contacts.phone }}</a>
+                <p class="footer-info-text">Александр Валерьевич</p>
               </div>
             </div>
+
+            {% if office.phone %}
+            <div class="footer-info-item">
+              <span class="footer-info-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h3.5l1.5 4.5L7.5 10a12.5 12.5 0 0 0 6.5 6.5l1.5-2.5L20 15.5V19a2 2 0 0 1-2.2 2A16.5 16.5 0 0 1 3 6.2 2 2 0 0 1 5 4z"/></svg>
+              </span>
+              <div>
+                <a href="tel:{{ office.phoneHref }}" class="footer-info-title">{{ office.phone }}</a>
+                <p class="footer-info-text">Телефон офиса</p>
+              </div>
+            </div>
+            {% endif %}
 
             <div class="footer-info-item">
               <span class="footer-info-icon">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="5.5" width="17" height="13" rx="2"/><path d="m4.5 7.5 7.5 5.5 7.5-5.5"/></svg>
               </span>
               <div>
-                <a href="mailto:{{ email }}" class="footer-info-title">{{ email }}</a>
+                <a href="mailto:{{ email }}" target="_blank" class="footer-info-title">{{ email }}</a>
                 <p class="footer-info-text">Email</p>
               </div>
             </div>
@@ -60,11 +71,15 @@
           {% endfor %}
 
           <div class="footer-socials">
-            <a href="https://wa.me/{{ contacts.socials.whatsapp }}" class="social-link">
+            <a href="{{ contacts.socials.max }}" target="_blank" rel="noopener" class="social-link">
+              <img src="/img/icon-max.svg" alt="MAX">
+              <span>Макс</span>
+            </a>
+            <a href="https://wa.me/{{ contacts.socials.whatsapp }}" target="_blank" rel="noopener" class="social-link">
               <img src="/img/icon-whatsapp.svg" alt="WhatsApp">
               <span>WhatsApp</span>
             </a>
-            <a href="https://t.me/{{ contacts.socials.telegram }}" class="social-link">
+            <a href="https://t.me/{{ contacts.socials.telegram }}" target="_blank" rel="noopener" class="social-link">
               <img src="/img/icon-telegram.svg" alt="Telegram">
               <span>Telegram</span>
             </a>

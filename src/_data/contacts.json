@@ -1,7 +1,8 @@
 {
   "legalName": "ООО «Основа права»",
-  "phone": "8-800-555-55-55",
-  "email": "info@osnova-prava.com",
+  "phone": "+7 (990) 009-36-90",
+  "phoneHref": "+79900093690",
+  "email": "million101@ya.ru",
   "address": "г. Бердянск, ул. Свободы, 50",
   "addressParts": {
     "country": "RU",
@@ -22,10 +23,9 @@
     "weekend": "Сб, Вс: выходной"
   },
   "socials": {
-    "telegram": "@bulat_law",
-    "whatsapp": "+79651112233",
-    "vk": "https://vk.com/bulat_law",
-    "instagram": "@bulat_law"
+    "max": "https://max.ru/u/f9LHodD0cOJuzNNh0WDt9zwMOl47C3J4fYl3qOdLyqSeEace0ETgvRlykjo",
+    "telegram": "urist_berdyansk",
+    "whatsapp": "79900093690"
   },
   "requisites": {
     "inn": "1234567890",
