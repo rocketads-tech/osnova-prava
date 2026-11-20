@@ -1,3 +1,5 @@
+const YM_COUNTER_ID = 114386213;
+
 document.addEventListener("DOMContentLoaded", () => {
   // ==========================================
   // 1. МОДАЛЬНОЕ ОКНО ОБРАТНОГО ЗВОНКА
@@ -13,21 +15,31 @@ document.addEventListener("DOMContentLoaded", () => {
     const modalContent = callbackModal.querySelector(".modal-content");
     const formTypeInput = callbackModal.querySelector("[data-form-type-input]");
     const modalStatus = callbackModal.querySelector("[data-modal-status]");
-    const submitBtn = modalForm ? modalForm.querySelector(".modal-submit") : null;
+    const submitBtn = modalForm
+      ? modalForm.querySelector(".modal-submit")
+      : null;
 
     const resetStatus = () => {
       if (!modalStatus) return;
       modalStatus.hidden = true;
       modalStatus.textContent = "";
-      modalStatus.classList.remove("modal-status--success", "modal-status--error");
+      modalStatus.classList.remove(
+        "modal-status--success",
+        "modal-status--error",
+      );
     };
 
     const setStatus = (text, type) => {
       if (!modalStatus) return;
       modalStatus.hidden = false;
       modalStatus.textContent = text;
-      modalStatus.classList.remove("modal-status--success", "modal-status--error");
-      modalStatus.classList.add(type === "success" ? "modal-status--success" : "modal-status--error");
+      modalStatus.classList.remove(
+        "modal-status--success",
+        "modal-status--error",
+      );
+      modalStatus.classList.add(
+        type === "success" ? "modal-status--success" : "modal-status--error",
+      );
     };
 
     openModalBtns.forEach((btn) => {
@@ -41,8 +53,10 @@ document.addEventListener("DOMContentLoaded", () => {
         if (modalContent) {
           modalContent.classList.remove("modal-content--success");
         }
-        modalTitle.textContent = btn.dataset.modalTitle || callbackModal.dataset.modalTitle;
-        modalSubtitle.textContent = btn.dataset.modalSubtitle || callbackModal.dataset.modalSubtitle;
+        modalTitle.textContent =
+          btn.dataset.modalTitle || callbackModal.dataset.modalTitle;
+        modalSubtitle.textContent =
+          btn.dataset.modalSubtitle || callbackModal.dataset.modalSubtitle;
         callbackModal.classList.add("modal--open");
       });
     });
@@ -78,20 +92,40 @@ document.addEventListener("DOMContentLoaded", () => {
         submitBtn.disabled = true;
         submitBtn.textContent = "Отправляем...";
 
-        fetch(modalForm.action, { method: "POST", body: new FormData(modalForm) })
+        fetch(modalForm.action, {
+          method: "POST",
+          body: new FormData(modalForm),
+        })
           .then((response) => response.json())
           .then((data) => {
             if (data.ok) {
+              // === YANDEX METRICA: Успешная отправка ===
+              const formType = formTypeInput
+                ? formTypeInput.value
+                : "consultation";
+              const goalId =
+                formType === "callback" ? "form_callback" : "form_consultation";
+              if (typeof ym !== "undefined") {
+                ym(YM_COUNTER_ID, "reachGoal", goalId);
+              }
+              // =========================================
               modalForm.reset();
               if (modalContent) {
                 modalContent.classList.add("modal-content--success");
               }
             } else {
-              setStatus(data.error || "Не удалось отправить заявку. Позвоните нам: +7 (990) 009-36-90", "error");
+              setStatus(
+                data.error ||
+                  "Не удалось отправить заявку. Позвоните нам: +7 (990) 009-36-90",
+                "error",
+              );
             }
           })
           .catch(() => {
-            setStatus("Ошибка соединения. Позвоните нам: +7 (990) 009-36-90", "error");
+            setStatus(
+              "Ошибка соединения. Позвоните нам: +7 (990) 009-36-90",
+              "error",
+            );
           })
           .finally(() => {
             syncSubmitState();
@@ -130,22 +164,22 @@ document.addEventListener("DOMContentLoaded", () => {
   // ==========================================
   // 3. СЛАЙДЕР ОТЗЫВОВ (SWIPER)
   // ==========================================
- if (
-   typeof Swiper !== "undefined" &&
-   document.querySelector(".reviews-slider")
- ) {
-   new Swiper(".reviews-slider", {
-     slidesPerView: 1,
-     spaceBetween: 20,
-     loop: false,
-     navigation: {
-       nextEl: ".reviews-next",
-       prevEl: ".reviews-prev",
-     },
-     breakpoints: {
-       768: {
-         spaceBetween: 30,
-       },
+  if (
+    typeof Swiper !== "undefined" &&
+    document.querySelector(".reviews-slider")
+  ) {
+    new Swiper(".reviews-slider", {
+      slidesPerView: 1,
+      spaceBetween: 20,
+      loop: false,
+      navigation: {
+        nextEl: ".reviews-next",
+        prevEl: ".reviews-prev",
+      },
+      breakpoints: {
+        768: {
+          spaceBetween: 30,
+        },
       },
     });
   }
@@ -165,7 +199,9 @@ document.addEventListener("DOMContentLoaded", () => {
       btn.addEventListener("click", () => {
         const city = btn.dataset.city;
 
-        cityButtons.forEach((item) => item.classList.toggle("hidden", item === btn));
+        cityButtons.forEach((item) =>
+          item.classList.toggle("hidden", item === btn),
+        );
 
         infoCards.forEach((card) => {
           card.classList.toggle("active", card.dataset.city === city);
@@ -186,9 +222,15 @@ document.addEventListener("DOMContentLoaded", () => {
   // 5. АНИМАЦИИ ПОЯВЛЕНИЯ (AOS-СТИЛЬ)
   // ==========================================
   const animatedEls = document.querySelectorAll("[data-aos]");
-  const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const prefersReducedMotion = window.matchMedia(
+    "(prefers-reduced-motion: reduce)",
+  ).matches;
 
-  if (animatedEls.length && !prefersReducedMotion && "IntersectionObserver" in window) {
+  if (
+    animatedEls.length &&
+    !prefersReducedMotion &&
+    "IntersectionObserver" in window
+  ) {
     const revealObserver = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -201,22 +243,19 @@ document.addEventListener("DOMContentLoaded", () => {
               el.style.transitionDelay = el.dataset.aosDelay + "ms";
             }
             el.classList.add("aos-animate");
-            el.addEventListener(
-              "transitionend",
-              function handler(event) {
-                if (event.target !== el) return;
-                el.style.transitionDuration = "";
-                el.style.transitionDelay = "";
-                el.classList.add("aos-done");
-                el.removeEventListener("transitionend", handler);
-              }
-            );
+            el.addEventListener("transitionend", function handler(event) {
+              if (event.target !== el) return;
+              el.style.transitionDuration = "";
+              el.style.transitionDelay = "";
+              el.classList.add("aos-done");
+              el.removeEventListener("transitionend", handler);
+            });
           } else {
             el.classList.remove("aos-animate", "aos-done");
           }
         });
       },
-      { threshold: 0.15 }
+      { threshold: 0.15 },
     );
 
     animatedEls.forEach((el) => revealObserver.observe(el));
@@ -253,16 +292,19 @@ document.addEventListener("DOMContentLoaded", () => {
             navNaturalTop = headerNav.getBoundingClientRect().top + currentY;
           }
 
-          headerNav.classList.toggle("header-nav--fixed", currentY > navNaturalTop);
+          headerNav.classList.toggle(
+            "header-nav--fixed",
+            currentY > navNaturalTop,
+          );
           headerNav.classList.toggle(
             "header-nav--hidden",
-            currentY > lastScrollY && currentY > navNaturalTop + 150
+            currentY > lastScrollY && currentY > navNaturalTop + 150,
           );
         }
 
         lastScrollY = currentY;
       },
-      { passive: true }
+      { passive: true },
     );
   }
 
@@ -270,13 +312,15 @@ document.addEventListener("DOMContentLoaded", () => {
   // 7. АКТИВНЫЕ ПУНКТЫ МЕНЮ
   // ==========================================
   const navLinks = document.querySelectorAll(
-    '.header-nav a[href^="#"], .mobile-nav a[href^="#"]'
+    '.header-nav a[href^="#"], .mobile-nav a[href^="#"]',
   );
 
   if (navLinks.length) {
     const spySections = [];
     navLinks.forEach((link) => {
-      const section = document.getElementById(link.getAttribute("href").slice(1));
+      const section = document.getElementById(
+        link.getAttribute("href").slice(1),
+      );
       if (section && !spySections.includes(section)) {
         spySections.push(section);
       }
@@ -293,11 +337,61 @@ document.addEventListener("DOMContentLoaded", () => {
       });
 
       navLinks.forEach((link) => {
-        link.classList.toggle("active", link.getAttribute("href").split("#")[1] === currentId);
+        link.classList.toggle(
+          "active",
+          link.getAttribute("href").split("#")[1] === currentId,
+        );
       });
     };
 
     updateActiveLink();
     window.addEventListener("scroll", updateActiveLink, { passive: true });
   }
+
+  // ==========================================
+  // 8. YANDEX METRICA: UTM И КЛИКИ
+  // ==========================================
+
+  // А. Автоматический сбор UTM-меток в форму при загрузке страницы
+  const metricaForm = document.querySelector(".modal-form");
+  if (metricaForm) {
+    const urlParams = new URLSearchParams(window.location.search);
+    const utmKeys = [
+      "utm_source",
+      "utm_medium",
+      "utm_campaign",
+      "utm_content",
+      "utm_term",
+    ];
+
+    utmKeys.forEach((key) => {
+      if (
+        urlParams.has(key) &&
+        !metricaForm.querySelector(`input[name="${key}"]`)
+      ) {
+        const hiddenInput = document.createElement("input");
+        hiddenInput.type = "hidden";
+        hiddenInput.name = key;
+        hiddenInput.value = urlParams.get(key);
+        metricaForm.appendChild(hiddenInput);
+      }
+    });
+  }
+
+  // Б. Отслеживание кликов по телефонам и мессенджерам (делегирование)
+  document.addEventListener("click", function (e) {
+    // Клик по телефону
+    const phoneLink = e.target.closest('a[href^="tel:"]');
+    if (phoneLink && typeof ym !== "undefined") {
+      ym(YM_COUNTER_ID, "reachGoal", "phone_click");
+    }
+
+    // Клик по мессенджерам (WhatsApp, Telegram, Max)
+    const messengerLink = e.target.closest(
+      'a[href*="wa.me"], a[href*="t.me"], a[href*="max.ru"]',
+    );
+    if (messengerLink && typeof ym !== "undefined") {
+      ym(YM_COUNTER_ID, "reachGoal", "messenger_click");
+    }
+  });
 });
