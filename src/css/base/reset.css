@@ -47,7 +47,8 @@ a:hover {
 }
 
 section[id],
-footer[id] {
+footer[id],
+.service-card[id] {
   scroll-margin-top: 2.5rem;
 }
 
