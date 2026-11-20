@@ -386,12 +386,20 @@ document.addEventListener("DOMContentLoaded", () => {
       ym(YM_COUNTER_ID, "reachGoal", "phone_click");
     }
 
-    // Клик по мессенджерам (WhatsApp, Telegram, Max)
+    // Клик по мессенджерам — определяем конкретный канал
     const messengerLink = e.target.closest(
       'a[href*="wa.me"], a[href*="t.me"], a[href*="max.ru"]',
     );
     if (messengerLink && typeof ym !== "undefined") {
-      ym(YM_COUNTER_ID, "reachGoal", "messenger_click");
+      const href = messengerLink.href.toLowerCase();
+
+      if (href.includes("wa.me") || href.includes("whatsapp")) {
+        ym(YM_COUNTER_ID, "reachGoal", "messenger_whatsapp");
+      } else if (href.includes("t.me") || href.includes("telegram")) {
+        ym(YM_COUNTER_ID, "reachGoal", "messenger_telegram");
+      } else if (href.includes("max.ru")) {
+        ym(YM_COUNTER_ID, "reachGoal", "messenger_max");
+      }
     }
   });
 });
